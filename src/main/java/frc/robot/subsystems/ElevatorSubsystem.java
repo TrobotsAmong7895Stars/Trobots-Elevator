@@ -41,7 +41,7 @@ public class ElevatorSubsystem extends SubsystemBase {
   // Mechanism Circumference is the distance traveled by each mechanism rotation converting rotations to meters.
   .withMechanismCircumference(Meters.of(Inches.of(2.638).in(Meters) * 22))
   // Feedback Constants (PID Constants)
-  .withClosedLoopController(0.0042004, 0, 0, MetersPerSecond.of(0.5), MetersPerSecondPerSecond.of(0.5))
+  .withClosedLoopController(0.0042004, 0, 0, MetersPerSecond.of(1), MetersPerSecondPerSecond.of(0.75))
   .withSimClosedLoopController(4, 0, 0, MetersPerSecond.of(0.5), MetersPerSecondPerSecond.of(0.5))
   // Feedforward Constants
   .withFeedforward(new ElevatorFeedforward(0.24395, 0.42824, 11.372))
@@ -74,7 +74,7 @@ public class ElevatorSubsystem extends SubsystemBase {
   }
 
   private ElevatorConfig elevconfig = new ElevatorConfig(sparkSmartMotorController)
-      .withStartingHeight(Meters.of(0))
+      .withStartingHeight(Meters.of(-0.25))
       .withHardLimits(Meters.of(0), Meters.of(3))
       .withTelemetry("Elevator", TelemetryVerbosity.HIGH)
       .withMass(Pounds.of(16));
