@@ -64,17 +64,8 @@ public class ElevatorSubsystem extends SubsystemBase {
   // Create our SmartMotorController from our Spark and config with the NEO.
   private SmartMotorController sparkSmartMotorController = new SparkWrapper(spark, DCMotor.getNEO(1), smcConfig);
 
-  private Debouncer statorDebounce = new Debouncer(0.1); // Debouncer to prevent rapid changes in 0.1s
-
-  /**
-   * Game piece is detected if you're using over 40A current for more than 0.1s
-   */
-  public boolean isGamePieceIn() {
-    return statorDebounce.calculate(sparkSmartMotorController.getStatorCurrent().gte(Amps.of(40)));
-  }
-
   private ElevatorConfig elevconfig = new ElevatorConfig(sparkSmartMotorController)
-      .withStartingHeight(Meters.of(-0.25))
+      .withStartingHeight(Meters.of(0.03))
       .withHardLimits(Meters.of(0), Meters.of(3))
       .withTelemetry("Elevator", TelemetryVerbosity.HIGH)
       .withMass(Pounds.of(16));

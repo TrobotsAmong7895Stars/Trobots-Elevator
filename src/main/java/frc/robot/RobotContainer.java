@@ -36,10 +36,10 @@ public class RobotContainer {
     configureBindings();
   
     // Set the default command to force the elevator to go to 0.
-    // m_exampleSubsystem.setDefaultCommand(m_exampleSubsystem.setHeight(Meters.of(0)));
+     m_exampleSubsystem.setDefaultCommand(m_exampleSubsystem.setHeight(Meters.of(0)));
 
       // Set the default command to force the elevator to release.
-     m_exampleSubsystem.setDefaultCommand(m_exampleSubsystem.set(0));
+     // m_exampleSubsystem.setDefaultCommand(m_exampleSubsystem.set(0));
   }
 
   /**
